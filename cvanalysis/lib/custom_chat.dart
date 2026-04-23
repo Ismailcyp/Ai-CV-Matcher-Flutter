@@ -12,9 +12,7 @@ class CustomChatBox extends StatefulWidget {
 
 class _CustomChatBoxState extends State<CustomChatBox> {
   final TextEditingController _messageController = TextEditingController();
-  
-  // This list holds our chat history. 
-  // 'isUser' checks if the bubble should be on the right (blue) or left (dark).
+
   final List<Map<String, dynamic>> _messages = [
     {"text": "Hello! I am your AI assistant. Do you have any questions about these jobs?", "isUser": false}
         
@@ -22,14 +20,12 @@ class _CustomChatBoxState extends State<CustomChatBox> {
 
   bool _isTyping = false;
 
-  // ------------------------------------
-  // SEND MESSAGE LOGIC
-  // ------------------------------------
+
   void _handleSendMessage() async {
     String text = _messageController.text.trim();
     if (text.isEmpty) return;
 
-    // 1. Add user message to the screen
+
     setState(() {
       _messages.add({"text": text, "isUser": true});
       _isTyping = true;
@@ -43,19 +39,17 @@ class _CustomChatBoxState extends State<CustomChatBox> {
 
 Future<void> _sendMessageTon8n(String text) async {
     try {
-      // 1. Your n8n Production Webhook URL
-      // 19ddccf1-361d-4d5a-ba83-8d02595880ce
+
       final String n8nUrl = 'https://ismail2.app.n8n.cloud/webhook/19ddccf1-361d-4d5a-ba83-8d02595880ce';
 
       debugPrint("✉️ Sending message to n8n.a..");
 
-      // 2. Send the message to n8n
       final response = await http.post(
         Uri.parse(n8nUrl),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
-          'userMessage': text, // We send the text to n8n
-          'userId': 'ismail_123', // Optional: Send an ID so n8n remembers the chat history
+          'userMessage': text, 
+          'userId': 'ismail_123', 
         }),
       );
 
@@ -84,20 +78,18 @@ Future<void> _sendMessageTon8n(String text) async {
       }
     }
   }
-  // ------------------------------------
-  // CHAT UI
-  // ------------------------------------
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Color.fromARGB(255, 41, 1, 1), // Dark theme background
+        color: Color.fromARGB(255, 41, 1, 1), 
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       
       child: Column(
         children: [
-          // Drag handle at the top
+     
           Container(
             margin: const EdgeInsets.symmetric(vertical: 12),
             height: 5,
@@ -108,7 +100,7 @@ Future<void> _sendMessageTon8n(String text) async {
             ),
           ),
           
-          // Chat Header
+         
           const Text(
             "AI Assistant",
             style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
@@ -116,7 +108,7 @@ Future<void> _sendMessageTon8n(String text) async {
           
           const Divider(color: Colors.white24),
 
-          // Message List
+       
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(16),
@@ -148,8 +140,7 @@ Future<void> _sendMessageTon8n(String text) async {
               },
             ),
           ),
-
-          // Typing Indicator
+     
           if (_isTyping)
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -159,7 +150,6 @@ Future<void> _sendMessageTon8n(String text) async {
               ),
             ),
 
-          // Bottom Input Field
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Row(
