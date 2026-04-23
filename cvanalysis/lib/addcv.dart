@@ -21,9 +21,7 @@ class _AddCvPageState extends State<AddCvPage> {
   String? _extractedText;
   bool _isProcessing = false;
 
-  // -------------------------------
-  // GEMINI ANALYSIS FUNCTION
-  // -------------------------------
+
 Future<void> _analyzeCVWithGemini(String cvText) async {
   setState(() {
     _isProcessing = true;
@@ -50,12 +48,12 @@ Future<void> _analyzeCVWithGemini(String cvText) async {
     Here is the CV Text:
     $cvText 
     ''';
-    //  Generate the Content
+    
     final response = await model.generateContent([Content.text(prompt)]);
     final String aiText = response.text ?? "[]";
 
 
-    //  Parse the JSON and Navigate
+    
     final List<dynamic> matches = jsonDecode(aiText);
 
     if (mounted) {
@@ -79,9 +77,7 @@ Future<void> _analyzeCVWithGemini(String cvText) async {
   }
 }
 
-  // -------------------------------
-  // PICK AND READ PDF
-  // -------------------------------
+
   Future<void> _pickAndProcessCV() async {
 
     setState(() {
@@ -147,9 +143,6 @@ Future<void> _analyzeCVWithGemini(String cvText) async {
     }
   }
 
-  // -------------------------------
-  // UI
-  // -------------------------------
   @override
   Widget build(BuildContext context) {
 
@@ -169,9 +162,7 @@ Future<void> _analyzeCVWithGemini(String cvText) async {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
       
-            // -------------------------------
-            // UPLOAD SECTION
-            // -------------------------------
+
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
@@ -225,9 +216,7 @@ Future<void> _analyzeCVWithGemini(String cvText) async {
       
             const SizedBox(height: 24),
       
-            // -------------------------------
-            // ANALYZE BUTTON
-            // -------------------------------
+
             ElevatedButton(
               onPressed: (_extractedText == null || _isProcessing)
                   ? null
@@ -255,9 +244,7 @@ Future<void> _analyzeCVWithGemini(String cvText) async {
       
             const SizedBox(height: 16),
       
-            // -------------------------------
-            // SKIP BUTTON
-            // -------------------------------
+
             TextButton(
               onPressed: () {
                 Navigator.push(
@@ -284,7 +271,6 @@ Future<void> _analyzeCVWithGemini(String cvText) async {
         ),
       ),
 
-        //AI BUTTON Floating
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -293,7 +279,7 @@ Future<void> _analyzeCVWithGemini(String cvText) async {
             isScrollControlled: true, 
             backgroundColor: Colors.transparent,
             builder: (context) => Padding(
-              // pushes the chat box UP when the keyboard opens
+
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
               child: SizedBox(
                 height: MediaQuery.of(context).size.height * 0.65, // Takes up 65% of screen
