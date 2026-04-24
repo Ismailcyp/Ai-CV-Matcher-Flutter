@@ -1,6 +1,29 @@
-# AI CV Matcher 🚀
+# 🚀 AI CV Matcher 
+
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![n8n](https://img.shields.io/badge/n8n-%23FF6B6B.svg?style=for-the-badge&logo=n8n&logoColor=white)
+![Gemini AI](https://img.shields.io/badge/Gemini_AI-%238E75B2.svg?style=for-the-badge&logo=googlebard&logoColor=white)
 
 A stateful, AI-powered career assistant built with **Flutter** and **n8n**. This application goes beyond a standard ChatGPT wrapper by utilizing a custom backend workflow to cross-reference user skills against a hidden dataset of job openings, retaining conversational memory across sessions.
+
+---
+
+## 📱 App Preview
+
+
+### Screenshots
+<p align="center">
+  <img src="https://github.com/Ismailcyp/Ai-CV-Matcher-Flutter/blob/main/cvanalysis/home.png?raw=true" alt="Home" width="220"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/Ismailcyp/Ai-CV-Matcher-Flutter/blob/main/cvanalysis/upload.png?raw=true" alt="UploadCV" width="220"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/Ismailcyp/Ai-CV-Matcher-Flutter/blob/main/cvanalysis/jopsmatch.png?raw=true" alt="Jops Match" width="220"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/Ismailcyp/Ai-CV-Matcher-Flutter/blob/main/cvanalysis/chat&n8n.png?raw=true" alt="Job Match Result" width="220"/>
+  </p>
+
+---
 
 ## ✨ Features
 * **Conversational UI:** A smooth, native Flutter chat interface with custom slide-in route animations and loading state indicators.
